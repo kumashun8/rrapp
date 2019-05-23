@@ -1,5 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
 import ProductsContainer from './ProductsContainer';
 import FormContainer from './FormContainer';
 
