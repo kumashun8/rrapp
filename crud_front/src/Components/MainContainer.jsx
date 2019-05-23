@@ -38,10 +38,10 @@ class MainContainer extends React.Component {
 
     deleteProduct = (id) => {
         axios.delete(`http://localhost:3001/products/${id}`)
-            .then((response) => {
-                const productIndex = this.state.products.findIndex(x => x.id === id)
-                console.log(productIndex)
-                const deletedProducts = update(this.state.produsts, {0: { $splice: [[productIndex, 1]] }})
+        .then((response) => {
+            const productIndex = this.state.products.findIndex(x => x.id === id)
+            console.log(productIndex)
+            const deletedProducts = update(this.state.produsts,  {$splice: [[productIndex, 1]]})
             this.setState({ produsts: deletedProducts })
             console.log('set')
         })
