@@ -1,6 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import ProductsContainer from './ProductsContainer';
+import FormContainer from './FormContainer';
 
 class MainContainer extends React.Component {
     constructor(props) {
@@ -24,6 +25,7 @@ class MainContainer extends React.Component {
     render() {
         return (
             <div className="app-main">
+                <FormContainer />
                 <ProductsContainer productData={ this.state.products } />
             </div>
         );
