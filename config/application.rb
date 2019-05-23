@@ -37,7 +37,7 @@ module Rrapp
         origins 'http://localhost:3000'
         resource '*',
         :headers => :any,
-        :method => [:get, :post, :patch, :delete, :options]
+        :methods => [:get, :post, :patch, :delete, :options]
       end
     end
   end
