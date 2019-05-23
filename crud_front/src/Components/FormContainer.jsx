@@ -13,6 +13,11 @@ class FormContainer extends React.Component {
         this.setState({ product: e.target.value })
     }
 
+    hundleSubmit = () => {
+        this.props.createProduct(this.state.product)
+        this.setState({product:''})
+    }
+
     render() {
         return (
             <div>
