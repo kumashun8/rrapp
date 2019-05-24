@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
-import update from 'react-addons-update';
 import ProductsContainer from './ProductsContainer';
 import FormContainer from './FormContainer';
 
@@ -28,8 +27,9 @@ class MainContainer extends React.Component {
     createProduct = (product) => {
         axios.post('http://localhost:3001/products', { product: product })
         .then((response) => {
-            const newData = update(this.state.products, { $push: [response.data] })
-            this.setState({products: newData})
+            var newProducts = this.state.products
+            newProducts.push(response.data)
+            this.setState({products: newProducts})
         })
         .catch ((data) => {
             console.log(data)
@@ -40,10 +40,9 @@ class MainContainer extends React.Component {
         axios.delete(`http://localhost:3001/products/${id}`)
         .then((response) => {
             const productIndex = this.state.products.findIndex(x => x.id === id)
-            console.log([[productIndex, 1]])
-            const deletedProducts = update(this.state.produsts,  {$splice: [[productIndex, 1]]})
-            this.setState({ produsts: deletedProducts })
-            console.log('set')
+            var products = this.state.products
+            var newProducts = products.splice(productIndex, 1)
+            this.setState({ produsts: newProducts })
         })
         .catch ((data) => {
             console.log(data)
@@ -54,8 +53,9 @@ class MainContainer extends React.Component {
         axios.patch(`http://localhost:3001/products/${id}`, {product: product})
         .then((response) => {
             const productIndex = this.state.products.findIndex(x => x.id === id)
-            const products = update(this.state.produsts, {[productIndex]: {$set: response.data}})
-            this.setState({ produsts: products })
+            var newProducts = this.state.products
+            newProducts[productIndex].product = product
+            this.setState({ produsts: newProducts })
         })
         .catch ((data) => {
             console.log(data)
