@@ -40,7 +40,7 @@ class MainContainer extends React.Component {
         axios.delete(`http://localhost:3001/products/${id}`)
         .then((response) => {
             const productIndex = this.state.products.findIndex(x => x.id === id)
-            console.log(productIndex)
+            console.log([[productIndex, 1]])
             const deletedProducts = update(this.state.produsts,  {$splice: [[productIndex, 1]]})
             this.setState({ produsts: deletedProducts })
             console.log('set')
@@ -67,6 +67,7 @@ class MainContainer extends React.Component {
         return (
             <div className="app-main">
                 <FormContainer
+                    hendleAdd={this.hendleAdd}
                     createProduct={this.createProduct}
                 />
                 <ProductsContainer
