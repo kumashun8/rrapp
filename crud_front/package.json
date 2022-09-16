@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.17.1",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^3.4.1",
     "create-react-app": "^3.0.1",
     "react": "^16.2.0",
     "react-addons-update": "^15.6.2",
